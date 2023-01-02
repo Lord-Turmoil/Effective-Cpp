@@ -30,3 +30,20 @@
 *.exe
 *.out
 *.app
+
+# Something else
+*.md
+*.pptx
+*.pdf
+*.png
+*.jpg
+
+# Some directories
+**/Debug/
+**/Release/
+**/x64/
+**/x86/
+**/int/
+**/output/
+**/lib/
+**/.vs/
