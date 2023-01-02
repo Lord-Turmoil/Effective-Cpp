@@ -62,6 +62,7 @@ int main()
 
 	{
 		cnsl::InsertHeaderLine("std::shared_ptr<>", '+');
+		// It seems that shared pointer does not support custom deleter?
 		std::shared_ptr<Object> share_1(new Object(1));
 		std::shared_ptr<Object> share_2(new Object(2));
 		std::shared_ptr<Object> share_3(share_2);
