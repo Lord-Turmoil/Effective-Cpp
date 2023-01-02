@@ -33,10 +33,10 @@
 
 _CNSL_BEGIN
 
-static const char INPUT_TERMINATOR[] = "\n\r";
+const char INPUT_TERMINATOR[] = "\n\r";
 
-static const int INPUT_BUFFER_SIZE = 128;
-static char buffer[INPUT_BUFFER_SIZE];
+const int INPUT_BUFFER_SIZE = 128;
+char buffer[INPUT_BUFFER_SIZE];
 
 /*
 **+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+

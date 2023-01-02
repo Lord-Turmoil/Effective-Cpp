@@ -1,52 +1,88 @@
 /******************************************************************************
  ***                        T O N Y ' S  S T U D I O                        ***
  ******************************************************************************
- *                   Project Name : ConsoleTest                               *
+ *                   Project Name : Implementations                           *
  *                                                                            *
- *                      File Name : main.cpp                                  *
+ *                      File Name : StaticCast.h                              *
  *                                                                            *
  *                     Programmer : Tony Skywalker                            *
  *                                                                            *
- *                     Start Date : January 1, 2023                           *
+ *                     Start Date : January 2, 2022                           *
  *                                                                            *
  *                    Last Update :                                           *
  *                                                                            *
  * -------------------------------------------------------------------------- *
  * Over View:                                                                 *
- *   To test console lib.                                                     *
+ *   Static cast create a copy?                                               *
  * -------------------------------------------------------------------------- *
  * Build Environment:                                                         *
  *   Windows 11 Pro                                                           *
  *   Visual Studio 2022 Community Preview                                     *
  ******************************************************************************/
 
+#ifndef _STATIC_CAST_
+#define _STATIC_CAST_
+
 #include <cnsl.h>
 
-bool check(int a)
+class Base
 {
-	return (a < 10);
-}
-
-int main()
-{
-	cnsl::InitConsole(110);
-
-	cnsl::Print();
-
-	int value = 0;
-
-	cnsl::InsertText("Input an integer: ");
-	while (value != -1)
+public:
+	Base() : count(0) {}
+	virtual void Show()
 	{
-		while (!cnsl::GetNumber(&value, check, "A number less than 10!"))
-			continue;
-		cnsl::InsertNewLine();
-		cnsl::InsertText("Your integer is integer: ");
-		cnsl::InsertNumber(value);
-		cnsl::InsertNewLine();
-		cnsl::InsertHeaderLine("Split Line", '-');
-		cnsl::InsertText("Input an integer: ");
+		cnsl::InsertText("Base class [%p] No %d\n", this, GetCount());
 	}
 
-	return 0;
+/*
+** protected does not provide encapsulation. As it may cause as much
+** trouble as public, as for its child classes.
+*/
+protected:
+	int GetCount() const { return count++; }
+
+private:
+	// mutable can avoid bitwise const
+	mutable int count;
+};
+
+class DeriveA : public Base
+{
+public:
+	virtual void Show()
+	{
+		/*
+		** This is totally wrong! It depends on the memory layout
+		** of the object, and it varies.
+		*/
+		static_cast<Base>(*this).Show();
+		cnsl::InsertText("Derive A   [%p] No %d\n", this, GetCount());
+	}
+};
+
+class DeriveB : public Base
+{
+public:
+	virtual void Show()
+	{
+		Base::Show();
+		cnsl::InsertText("Derive B   [%p] No %d\n", this, GetCount());
+	}
+};
+
+void StaticCast()
+{
+	cnsl::InsertHeaderLine("Derive A", '-');
+	DeriveA a;
+	a.Show();
+	a.Show();
+	a.Show();
+
+	cnsl::InsertHeaderLine("Derive B", '-');
+	DeriveB b;
+	b.Show();
+	b.Show();
+	b.Show();
 }
+
+#endif

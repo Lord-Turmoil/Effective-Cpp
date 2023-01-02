@@ -1,52 +1,59 @@
 /******************************************************************************
  ***                        T O N Y ' S  S T U D I O                        ***
  ******************************************************************************
- *                   Project Name : ConsoleTest                               *
+ *                   Project Name : CtorDtorAss                               *
  *                                                                            *
- *                      File Name : main.cpp                                  *
+ *                      File Name : AbstractBase.h                            *
  *                                                                            *
  *                     Programmer : Tony Skywalker                            *
  *                                                                            *
- *                     Start Date : January 1, 2023                           *
+ *                     Start Date : January 2, 2023                           *
  *                                                                            *
  *                    Last Update :                                           *
  *                                                                            *
  * -------------------------------------------------------------------------- *
  * Over View:                                                                 *
- *   To test console lib.                                                     *
+ *   Create a abstract class without extra functions.                         *
  * -------------------------------------------------------------------------- *
  * Build Environment:                                                         *
  *   Windows 11 Pro                                                           *
  *   Visual Studio 2022 Community Preview                                     *
  ******************************************************************************/
 
+#ifndef _ABSTRACT_BASE_
+#define _ABSTRACT_BASE_
+
 #include <cnsl.h>
 
-bool check(int a)
+class Abstract
 {
-	return (a < 10);
-}
+public:
+	/*
+	** Just a virtual destructor can make a fine abstract
+	** class, but not enough. It needs a definition, or it
+	** will cause linking error.
+	*/
+	virtual ~Abstract() = 0;
+};
 
-int main()
+Abstract::~Abstract() {}
+
+class Concrete
 {
-	cnsl::InitConsole(110);
-
-	cnsl::Print();
-
-	int value = 0;
-
-	cnsl::InsertText("Input an integer: ");
-	while (value != -1)
+public:
+	Concrete()
 	{
-		while (!cnsl::GetNumber(&value, check, "A number less than 10!"))
-			continue;
-		cnsl::InsertNewLine();
-		cnsl::InsertText("Your integer is integer: ");
-		cnsl::InsertNumber(value);
-		cnsl::InsertNewLine();
-		cnsl::InsertHeaderLine("Split Line", '-');
-		cnsl::InsertText("Input an integer: ");
+		cnsl::InsertText("Concrete()\n");
 	}
+	~Concrete()
+	{
+		cnsl::InsertText("~Concrete()\n");
+	}
+};
 
-	return 0;
+void AbstractBase()
+{
+	Concrete concrete;
 }
+
+#endif

@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{120dce6e-e076-4fd9-be6c-a26e8c143eff}</ProjectGuid>
-    <RootNamespace>Resource</RootNamespace>
+    <ProjectGuid>{8f2dfcad-ab69-43e9-9871-566b75b47d51}</ProjectGuid>
+    <RootNamespace>Implementations</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,15 +70,15 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir>$(Platform)int\$(ProjectName)\$(Configuration)\</IntDir>
     <IncludePath>E:\Program\Workshop\Effective C++\inc;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program\Workshop\Effective C++\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
+    <IntDir>$(Platform)int\$(ProjectName)\$(Configuration)\</IntDir>
     <IncludePath>E:\Program\Workshop\Effective C++\inc;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program\Workshop\Effective C++\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -139,7 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SmartPointer.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StaticCast.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

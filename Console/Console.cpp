@@ -376,7 +376,7 @@ void DefaultHeaderPrinter()
 		InsertHeaderLine(buffer, ' ');
 	}
 
-	InsertSplitLine('=');
+	InsertSplitLine('_');
 
 	InsertNewLine();
 }

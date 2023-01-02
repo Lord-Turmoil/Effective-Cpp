@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{120dce6e-e076-4fd9-be6c-a26e8c143eff}</ProjectGuid>
-    <RootNamespace>Resource</RootNamespace>
+    <ProjectGuid>{a64d9739-94e8-49c9-a2d8-14ff771917bf}</ProjectGuid>
+    <RootNamespace>CtorDtorAss</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,13 +70,13 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
     <IncludePath>E:\Program\Workshop\Effective C++\inc;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program\Workshop\Effective C++\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
     <IncludePath>E:\Program\Workshop\Effective C++\inc;$(IncludePath)</IncludePath>
@@ -139,7 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SmartPointer.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

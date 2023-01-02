@@ -74,11 +74,13 @@
     <IncludePath>E:\Program\Workshop\Effective C++\inc;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program\Workshop\Effective C++\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>E:\Program\Workshop\Effective C++\inc;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program\Workshop\Effective C++\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
