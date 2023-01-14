@@ -52,7 +52,7 @@ void InsertLineFeed()
 	}
 }
 
-void InesrtLineFeed(int n)
+void InsertLineFeed(int n)
 {
 	for (int i = 0; i < n; i++)
 		InsertLineFeed();
@@ -80,6 +80,12 @@ void InsertBackspace()
 	putchar(BACKSPACE);
 	putchar(SPACE);
 	putchar(BACKSPACE);
+}
+
+void InsertBackspace(int n)
+{
+	for (int i = 0; i < n; i++)
+		InsertBackspace();
 }
 
 void InsertChar(const char ch)

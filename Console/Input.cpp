@@ -3,7 +3,7 @@
  ******************************************************************************
  *                   Project Name : Console                                   *
  *                                                                            *
- *                      File Name : Input.h                                   *
+ *                      File Name : Input.cpp                                 *
  *                                                                            *
  *                     Programmer : Tony Skywalker                            *
  *                                                                            *
@@ -20,92 +20,81 @@
  *   Visual Studio 2022 Community Preview                                     *
  ******************************************************************************/
 
-#ifndef _INPUT_H_
-#define _INPUT_H_
+#include "Input.h"
+#include "Common.h"
 
-#include "Macros.h"
-#include "Console.h"
-#include "Output.h"
-
-#include <conio.h>
-#include <sstream>
+#include <ctime>
 
 _CNSL_BEGIN
 
-const int INPUT_BUFFER_SIZE = 128;
-extern char buffer[INPUT_BUFFER_SIZE];
+static const char INPUT_TERMINATOR[] = "\n\r";
+char buffer[INPUT_BUFFER_SIZE];
 
-/*
-**+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-** Input Control
-**+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-*/
-bool GetString(char* buffer);
-
-
-template<typename _Ty>
-bool DefaultVerifier(_Ty value) { return true; }
-
-
-template<typename _Ty>
-bool GetNumber(_Ty* value, bool (*verifier)(_Ty), const char* prompt)
+static bool IsTerminator(char ch)
 {
-	COORD origin = GetCursorPosition();
-
-	GetString(buffer);
-	std::stringstream stream(buffer);
-
-	_Ty val;
-	bool err = false;
-	if (stream >> val)
+	for (const char* p = INPUT_TERMINATOR; *p; p++)
 	{
-		if (verifier && !verifier(val))
-			err = true;
+		if (*p == ch)
+			return true;
 	}
-	else
-		err = true;
 
-	if (err)
+	return false;
+}
+
+bool GetString(char* buffer)
+{
+	int length = 0;
+	char ch;
+
+	for (; ;)
 	{
-		Clear(origin.X);
-		SetCursorPosition(origin);
-		if (prompt)
+		ch = _getch();
+		if (IsTerminator(ch))
 		{
-			InsertText(prompt);
-			Sleep(1000);
-			Clear(origin.X);
-			SetCursorPosition(origin);
+			if (length > 0)
+				break;
+		}
+		else if (ch == BACKSPACE)
+		{
+			if (length > 0)
+			{
+				InsertBackspace();
+				length--;
+			}
+		}
+		else
+		{
+			buffer[length++] = ch;
+			InsertChar(ch);
 		}
 	}
-	else
-		*value = val;
 
-	return !err;
+	buffer[length] = '\0';
+
+	return true;
 }
 
-template<typename _Ty>
-bool GetNumber(_Ty* value)
+void FlushInput()
 {
-	return GetNumber(value, DefaultVerifier<_Ty>, nullptr);
+	static HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
+
+	FlushConsoleInputBuffer(hInput);
 }
 
-template<typename _Ty>
-bool GetNumber(_Ty* value, bool (*verifier)(_Ty))
+void WaitForKey(const char* prompt, char key)
 {
-	return GetNumber(value, verifier, nullptr);
+	InsertText(prompt);
+
+	FlushInput();
+
+	for (int i = 0; ; i++)
+	{
+		char ch = _getch();
+		if (ch == key)
+			break;
+		else if (key == (char)0)
+			break;
+	}
 }
-
-template<typename _Ty>
-bool GetNumber(_Ty* value, const char* prompt)	// error prompt
-{
-	return GetNumber(value, DefaultVerifier, prompt);
-}
-
-void FlushInput();
-
-// Wait for key to continue, 0 means any.
-void WaitForKey(const char* prompt, char key = (char)0);
 
 _CNSL_END
-
-#endif

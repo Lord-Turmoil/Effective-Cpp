@@ -73,12 +73,14 @@ public:
 void StaticCast()
 {
 	cnsl::InsertHeaderLine("Derive A", '-');
+	cnsl::InsertText("sizeof(DriveA) = %zd\n", sizeof(DeriveA));
 	DeriveA a;
 	a.Show();
 	a.Show();
 	a.Show();
 
 	cnsl::InsertHeaderLine("Derive B", '-');
+	cnsl::InsertText("sizeof(DriveB) = %zd\n", sizeof(DeriveB));
 	DeriveB b;
 	b.Show();
 	b.Show();
