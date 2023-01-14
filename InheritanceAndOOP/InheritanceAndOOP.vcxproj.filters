@@ -26,5 +26,8 @@
     <ClInclude Include="InheritanceAndImplementation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NVI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

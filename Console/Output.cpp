@@ -66,7 +66,7 @@ void InsertCarrige()
 void InsertNewLine()
 {
 	putchar(CHARRIGE);
-	putchar(LINE_FEED);
+	InsertLineFeed();
 }
 
 void InsertNewLine(int n)
