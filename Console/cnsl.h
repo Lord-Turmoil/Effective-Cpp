@@ -23,9 +23,9 @@
 #ifndef _CNSL_H_
 #define _CNSL_H_
 
-#include "../Console/Console.h"
-#include "../Console/Output.h"
-#include "../Console/Input.h"
+#include "inc/Console.h"
+#include "inc/Output.h"
+#include "inc/Input.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "console_b.lib")

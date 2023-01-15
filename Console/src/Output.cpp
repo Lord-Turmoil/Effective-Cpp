@@ -20,9 +20,9 @@
  *   Visual Studio 2022 Community Preview                                     *
  ******************************************************************************/
 
-#include "Output.h"
-#include "Console.h"
-#include "Common.h"
+#include "../inc/Output.h"
+#include "../inc/Console.h"
+#include "../inc/Common.h"
 
 #include <cstring>
 #include <cstdio>

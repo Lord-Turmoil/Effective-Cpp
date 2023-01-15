@@ -20,8 +20,8 @@
  *   Visual Studio 2022 Community Preview                                     *
  ******************************************************************************/
 
-#include "Input.h"
-#include "Common.h"
+#include "../inc/Input.h"
+#include "../inc/Common.h"
 
 #include <ctime>
 

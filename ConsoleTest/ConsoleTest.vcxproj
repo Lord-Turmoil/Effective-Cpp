@@ -71,13 +71,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>E:\Program\Workshop\Effective C++\inc;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Program\Workshop\Effective C++\Console;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program\Workshop\Effective C++\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>E:\Program\Workshop\Effective C++\inc;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Program\Workshop\Effective C++\Console;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Program\Workshop\Effective C++\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
