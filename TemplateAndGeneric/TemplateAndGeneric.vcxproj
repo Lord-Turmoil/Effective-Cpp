@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a64d9739-94e8-49c9-a2d8-14ff771917bf}</ProjectGuid>
-    <RootNamespace>CtorDtorAss</RootNamespace>
+    <ProjectGuid>{67765748-e75e-4e0d-8d4e-f53d9ee66450}</ProjectGuid>
+    <RootNamespace>TemplateAndGeneric</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -73,13 +73,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)Console\</IncludePath>
+    <IncludePath>$(SolutionDir)Console\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)Console\</IncludePath>
+    <IncludePath>$(SolutionDir)Console\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)lib\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -142,7 +142,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractBase.h" />
+    <ClInclude Include="TMP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

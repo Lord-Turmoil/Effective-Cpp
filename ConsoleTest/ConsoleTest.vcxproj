@@ -72,13 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)Console\</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)Console\</IncludePath>
-    <LibraryPath>$(SolutionDir)lib\</LibraryPath>
+    <LibraryPath>$(SolutionDir)lib\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)int\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>

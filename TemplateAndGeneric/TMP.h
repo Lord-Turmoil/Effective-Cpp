@@ -1,19 +1,19 @@
 /******************************************************************************
  ***                        T O N Y ' S  S T U D I O                        ***
  ******************************************************************************
- *                   Project Name : ConsoleTest                               *
+ *                   Project Name : TemplateAndGeneric                        *
  *                                                                            *
- *                      File Name : main.cpp                                  *
+ *                      File Name : TMP.h                                     *
  *                                                                            *
  *                     Programmer : Tony Skywalker                            *
  *                                                                            *
- *                     Start Date : January 1, 2023                           *
+ *                     Start Date : February 4, 2023                          *
  *                                                                            *
  *                    Last Update :                                           *
  *                                                                            *
  * -------------------------------------------------------------------------- *
  * Over View:                                                                 *
- *   To test console lib.                                                     *
+ *   Template MetaProgramming.                                                *
  * -------------------------------------------------------------------------- *
  * Build Environment:                                                         *
  *   Windows 11 Pro                                                           *
@@ -22,30 +22,28 @@
 
 #include <cnsl.h>
 
-bool check(int a)
+struct FactorialBase
 {
-	return (a < 10);
-}
+	using value_type = unsigned long long;
+};
 
-int main()
+template<unsigned n>
+struct Factorial : public FactorialBase
 {
-	cnsl::InitConsole(110);
-	cnsl::Print();
+	enum : value_type { value = (value_type)n * Factorial<n - 1>::value };
+};
 
-	int value = 0;
+// specialization?
+template<>
+struct Factorial<0> : public FactorialBase
+{
+	enum : value_type { value = 1 };
+};
 
-	cnsl::InsertText("Input an integer: ");
-	while (value != -1)
-	{
-		while (!cnsl::GetNumber(&value, check, "A number less than 10!"))
-			continue;
-		cnsl::InsertNewLine();
-		cnsl::InsertText("Your integer is integer: ");
-		cnsl::InsertNumber(value);
-		cnsl::InsertNewLine();
-		cnsl::InsertHeaderLine("Split Line", '-');
-		cnsl::InsertText("Input an integer: ");
-	}
-
-	return 0;
+void TMP()
+{
+	cnsl::InsertText("Factorial<5> = %llu\n", Factorial<5>::value);
+	cnsl::InsertText("Factorial<10> = %llu\n", Factorial<10>::value);
+	cnsl::InsertText("Factorial<15> = %llu\n", Factorial<15>::value);
+	cnsl::InsertText("Factorial<20> = %llu\n", Factorial<20>::value);
 }
